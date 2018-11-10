@@ -2,6 +2,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {TransferHttpCacheModule} from '@nguniversal/common';
+import {AngularFireModule} from '@angular/fire';
+
+import {environment} from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -42,6 +45,7 @@ export function metaFactory(): MetaLoader {
       useFactory: (metaFactory)
     }),
     TransferHttpCacheModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]
