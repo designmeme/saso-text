@@ -11,3 +11,13 @@ script:
 - npm rebuild node-sass
 - npm run lint
 - npm run build:prerender
+
+deploy:
+  provider: firebase
+  token: $FIREBASE_TOKEN
+  project: saso-text
+
+# 배포 결과를 이메일로 알린다.
+notifications:
+  email:
+    - ghe.lee19@gmail.com
