@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- 10.13.0
+
+branches:
+  only:
+  - master
+  - develop
+
+script:
+- npm rebuild node-sass
+- npm run lint
+- npm run build:prerender
