@@ -5,7 +5,7 @@ node_js:
 branches:
   only:
   - master
-  - develop
+#  - develop
 
 script:
 - npm rebuild node-sass
@@ -16,6 +16,11 @@ deploy:
   provider: firebase
   token: $FIREBASE_TOKEN
   project: saso-text
+  skip_cleanup: true
+  on:
+    branch: master
+#      tags: true
+
 
 # 배포 결과를 이메일로 알린다.
 notifications:
