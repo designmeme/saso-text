@@ -3,25 +3,28 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {TransferHttpCacheModule} from '@nguniversal/common';
 import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+
+import {HomeModule} from './home/home.module';
+import {WriteModule} from './write/write.module';
 
 import {environment} from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 
 // ngx-meta default setting
 import {MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning} from '@ngx-meta/core';
 export function metaFactory(): MetaLoader {
-  const origin = 'https://website.com';
+  const origin = 'https://saso-text.com';
   return new MetaStaticLoader({
     pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
     pageTitleSeparator: ' - ',
-    applicationName: '앱이름',
+    applicationName: '사소한 대필',
     applicationUrl: origin,
     defaults: {
-      title: '제목',
+      title: '사소한 대필',
       description: '설명',
-      author: '이지혜',
+      author: '제이의스튜디오',
       // og tags https://developers.facebook.com/docs/sharing/webmasters
       'og:image': `${origin}/assets/images/og/home.png`, // full url
       'og:type': 'website',
@@ -35,17 +38,19 @@ export function metaFactory(): MetaLoader {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'my-app'}),
+    BrowserModule.withServerTransition({appId: 'saso-text'}),
     AppRoutingModule,
     MetaModule.forRoot({
       provide: MetaLoader,
       useFactory: (metaFactory)
     }),
     TransferHttpCacheModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'saso-text'),
+    AngularFireDatabaseModule,
+    HomeModule,
+    WriteModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

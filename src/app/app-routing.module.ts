@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { MetaGuard } from '@ngx-meta/core';
 
-import {HomeComponent} from './home/home.component';
+import {HomeComponent} from './home/home/home.component';
+import {WriteComponent} from './write/write/write.component';
 
 const routes: Routes = [
   {
@@ -12,13 +13,8 @@ const routes: Routes = [
     canActivate: [MetaGuard],
   },
   {
-    path: 'lazy',
-    loadChildren: './lazy/lazy.module#LazyModule',
-    canActivate: [MetaGuard],
-  },
-  {
-    path: 'lazy/nested',
-    loadChildren: './lazy/lazy.module#LazyModule',
+    path: 'write/:id',
+    component: WriteComponent,
     canActivate: [MetaGuard],
   },
   { path: '**',      redirectTo: '/' },
@@ -27,7 +23,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(
     routes, {
-      enableTracing: !environment.production, // debugging purposes only
+      // enableTracing: !environment.production, // debugging purposes only
     }
   )],
   exports: [RouterModule]
