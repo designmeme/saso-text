@@ -1,0 +1,53 @@
+{
+  "subjects": {
+    "happy-new-year": {
+      "title": "새해 인사 메세지",
+      "image": "",
+      "metrics": {
+        "copies": 0,
+        "shares": 0
+      },
+      "tags": [
+        "인사",
+        "희망",
+        "감사",
+        "긍정",
+        "행운",
+        "계획",
+        "희망",
+        "행복",
+        "풍요",
+        "건강",
+        "가정",
+        "연말"
+      ],
+      "levels": 4,
+      "enable": true
+    },
+    "happy-birthday": {
+      "title": "생일 축하 메세지",
+      "image": "",
+      "metrics": {
+        "copies": 0,
+        "shares": 0
+      },
+      "enable": false
+    }
+  },
+
+  "messages": {
+    "happy-new-year": [
+      {
+        "tags": [
+          "감사"
+        ],
+        "texts": [
+          "ㄱㅅ",
+          "고마워",
+          "고아워요",
+          "감사합니다"
+        ]
+      }
+    ]
+  }
+}

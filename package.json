@@ -12,7 +12,8 @@
     "compile:server": "tsc -p server.tsconfig.json",
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server",
-    "serve:ssr": "node dist/server"
+    "serve:ssr": "node dist/server",
+    "deploy:database": "firebase database:set / data.json --confirm"
   },
   "pre-commit": [],
   "private": true,
