@@ -2,9 +2,18 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {TransferHttpCacheModule} from '@nguniversal/common';
+
+// firebase
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
+// fontawesome
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faCopyright} from '@fortawesome/free-regular-svg-icons/faCopyright';
+library.add(faCopyright);
+
+// feature modules
 import {HomeModule} from './home/home.module';
 import {WriteModule} from './write/write.module';
 
@@ -49,6 +58,7 @@ export function metaFactory(): MetaLoader {
     TransferHttpCacheModule,
     AngularFireModule.initializeApp(environment.firebase, 'saso-text'),
     AngularFireDatabaseModule,
+    FontAwesomeModule,
     HomeModule,
     WriteModule,
   ],
