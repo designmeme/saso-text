@@ -33,6 +33,11 @@
               "node_modules/normalize.css/normalize.css",
               "src/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
