@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// angular material
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 // firebase
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
@@ -47,6 +50,7 @@ import {LayoutComponent} from './components/layout/layout.component';
     CommonModule,
     RouterModule, // for LayoutComponent
 
+    BrowserAnimationsModule,
     MetaModule.forRoot({
       provide: MetaLoader,
       useFactory: (metaFactory)
@@ -57,6 +61,7 @@ import {LayoutComponent} from './components/layout/layout.component';
   ],
   exports: [
     LayoutComponent,
+    BrowserAnimationsModule,
     MetaModule,
     AngularFireModule,
     AngularFireDatabaseModule,
