@@ -1,28 +1,35 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import { environment } from '../environments/environment';
-import { MetaGuard } from '@ngx-meta/core';
 
-import {HomeComponent} from './home/home/home.component';
-import {WriteComponent} from './write/write/write.component';
+import {MetaGuard} from '@ngx-meta/core';
+
+import {LayoutComponent} from './core/components/layout/layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    canActivate: [MetaGuard],
+    component: LayoutComponent,
+    canActivateChild: [MetaGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: './modules/home/home.module#HomeModule',
+      },
+      {
+        path: 'write',
+        loadChildren: './modules/write/write.module#WriteModule',
+      },
+    ],
   },
-  {
-    path: 'write/:id',
-    component: WriteComponent,
-    canActivate: [MetaGuard],
-  },
+
   { path: '**',      redirectTo: '/' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(
     routes, {
+      preloadingStrategy: PreloadAllModules,
       // enableTracing: !environment.production, // debugging purposes only
     }
   )],
