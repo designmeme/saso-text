@@ -7,12 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    // data: {
-    //   meta: {
-    //     title: '',
-    //     description: 'Home, home sweet home... and what?'
-    //   }
-    // },
   }
 ];
 

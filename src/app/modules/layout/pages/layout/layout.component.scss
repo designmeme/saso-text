@@ -1,0 +1,43 @@
+@import "variables";
+
+.site-header {
+  height: 48px;
+  background-color: #fff;
+  border-bottom: 1px solid $border-color;
+
+  .header-title {
+    transition: all .3s;
+    // todo animation 적용하려면 absolute 체계로 바꿔야 함.
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0 20px;
+    a {
+      overflow: hidden;
+      font-size: 0;
+    }
+    .icon-logo {
+      width: 140px;
+      height: 23px;
+      //height: 25px;
+    }
+
+    .page-title {
+      margin-left: 12px;
+      font-size: 16px;
+      font-weight: $font-weight-base;
+      color: $body-color;
+    }
+  }
+
+  &.has-title {
+    .header-title {
+      justify-content: flex-start;
+      a {
+        width: 32px; // 심볼만 보이도록 줄이기
+      }
+    }
+  }
+}

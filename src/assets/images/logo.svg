@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 23">
+    <defs>
+        <style>
+            .cls-1{font-size:20px;font-family:NanumMyeongjo,Nanum Myeongjo}.cls-2{fill:#fff;stroke:#000}.cls-3{stroke:rgba(0,0,0,0)}.cls-4{stroke:none}.cls-5{fill:none}
+        </style>
+    </defs>
+    <g id="그룹_189" data-name="그룹 189" transform="translate(-167 -44)">
+        <text id="사소한_대필" class="cls-1" data-name="사소한 대필" transform="translate(256 62)">
+            <tspan x="-50.508" y="0">사소한 대필</tspan>
+        </text>
+        <g id="그룹_46" data-name="그룹 46" transform="translate(-2046 -3501.673)">
+            <g id="사각형_18" class="cls-2" data-name="사각형 18" transform="translate(2213 3546.673)">
+                <rect width="32" height="20" class="cls-4" rx="10"/>
+                <rect width="31" height="19" x=".5" y=".5" class="cls-5" rx="9.5"/>
+            </g>
+        </g>
+        <path id="교차_2" d="M852.773-1962.957l-4.672 3.885-.719-.629 4.964-4.514h.9l4.919 4.537-.7.652zm-11.545 0l-4.672 3.885-.718-.629 4.964-4.514h.9l4.919 4.537-.7.652z" class="cls-3" data-name="교차 2" transform="translate(-664 2016)"/>
+    </g>
+</svg>

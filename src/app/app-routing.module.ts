@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 
 import {MetaGuard} from '@ngx-meta/core';
 
-import {LayoutComponent} from './core/components/layout/layout.component';
+import {LayoutComponent} from './modules/layout/pages/layout/layout.component';
 
 const routes: Routes = [
   {

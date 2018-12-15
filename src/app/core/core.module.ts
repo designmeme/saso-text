@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 // angular material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -38,19 +37,15 @@ export function metaFactory(): MetaLoader {
   });
 }
 
-// LayoutComponent
-import {RouterModule} from '@angular/router';
-import {LayoutComponent} from './components/layout/layout.component';
+// feature modules
+import {LayoutModule} from '../modules/layout/layout.module';
 
 @NgModule({
   declarations: [
-    LayoutComponent,
   ],
   imports: [
-    CommonModule,
-    RouterModule, // for LayoutComponent
-
     BrowserAnimationsModule,
+    LayoutModule,
     MetaModule.forRoot({
       provide: MetaLoader,
       useFactory: (metaFactory)
@@ -60,8 +55,8 @@ import {LayoutComponent} from './components/layout/layout.component';
     FontAwesomeModule,
   ],
   exports: [
-    LayoutComponent,
     BrowserAnimationsModule,
+    LayoutModule,
     MetaModule,
     AngularFireModule,
     AngularFireDatabaseModule,

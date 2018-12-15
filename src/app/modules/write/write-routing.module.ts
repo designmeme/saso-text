@@ -5,15 +5,25 @@ import {WriteComponent} from './pages/write/write.component';
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: 'happy-new-year',
     component: WriteComponent,
     data: {
       meta: {
-        title: '',
-        description: ''
-      }
+        title: '새해 인사 메세지 쓰기',
+        description: '새해 인사 메세지 쓰기'
+      },
     },
-  }
+  },
+  // {
+  //   path: 'happy-birth-day',
+  //   component: WriteComponent,
+  //   data: {
+  //     meta: {
+  //       title: '새해 인사 메세지 쓰기',
+  //       description: '새해 인사 메세지 쓰기'
+  //     },
+  //   },
+  // },
 ];
 
 @NgModule({
