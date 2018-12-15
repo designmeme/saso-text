@@ -29,6 +29,8 @@
               }
             ],
             "styles": [
+              "node_modules/spoqa-han-sans/css/SpoqaHanSans-kr.css",
+              "node_modules/normalize.css/normalize.css",
               "src/scss/styles.scss"
             ],
             "scripts": []
@@ -79,6 +81,8 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
+              "node_modules/spoqa-han-sans/css/SpoqaHanSans-kr.css",
+              "node_modules/normalize.css/normalize.css",
               "src/scss/styles.scss"
             ],
             "assets": [
