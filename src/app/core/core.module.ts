@@ -8,16 +8,10 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../../environments/environment';
 
-// fontawesome
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {faCopyright} from '@fortawesome/free-regular-svg-icons/faCopyright';
-library.add(faCopyright);
-
 // ngx-meta default setting
 import {MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning} from '@ngx-meta/core';
 export function metaFactory(): MetaLoader {
-  const origin = 'https://saso-text.com';
+  const origin = 'https://saso-tBrowserAnimationsModuleext.com';
   return new MetaStaticLoader({
     pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
     pageTitleSeparator: ' - ',
@@ -52,7 +46,6 @@ import {LayoutModule} from '../modules/layout/layout.module';
     }),
     AngularFireModule.initializeApp(environment.firebase, 'saso-text'),
     AngularFireDatabaseModule,
-    FontAwesomeModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -60,7 +53,6 @@ import {LayoutModule} from '../modules/layout/layout.module';
     MetaModule,
     AngularFireModule,
     AngularFireDatabaseModule,
-    FontAwesomeModule,
   ],
 })
 export class CoreModule { }

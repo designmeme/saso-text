@@ -4,21 +4,32 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {MatIconModule, MatSliderModule} from '@angular/material';
 
+// fontawesome
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faCopyright} from '@fortawesome/free-regular-svg-icons/faCopyright';
+
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    HttpClientModule,
     MatIconModule,
     MatSliderModule,
-    HttpClientModule,
+    FontAwesomeModule,
   ],
   exports: [
+    HttpClientModule,
     MatIconModule,
     MatSliderModule,
-    HttpClientModule,
+    FontAwesomeModule,
   ],
 })
 export class SharedModule {
+  constructor() {
+    library.add(faCopyright);
+  }
+
   // constructor(
   //   iconRegistry: MatIconRegistry,
   //   sanitizer: DomSanitizer,

@@ -1,5 +1,10 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~owl.carousel/dist/assets/owl.carousel.css';
+//@import '~owl.carousel/dist/assets/owl.theme.default.css';
 
 @import "variables";
 @import "typography";
 @import "icons";
+@import "buttons";
+
+@import "layout";

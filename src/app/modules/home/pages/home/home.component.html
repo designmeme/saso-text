@@ -1,4 +1,35 @@
-<p>
-  home works!
-</p>
-<a routerLink="/write/happy-new-year">new year</a>
+<main class="main">
+  <div class="intro-animation">
+    input animation
+  </div>
+
+  <p class="intro">
+    짧은 문장 쓰기도 주저하는 우리,<br>
+    사소한 대필을<br>
+    써보는 것은 어때요?
+  </p>
+
+  <ng-container *ngIf="subjects">
+    <owl-carousel
+      #subjectCarousel
+      class="subject-carousel"
+      [options]="carouselOptions"
+      [items]="subjects"
+    >
+      <div class="item" *ngFor="let slide of subjects; let i = index;">
+        <input type="hidden" name="index" [value]="i">
+        <div class="subject-title">{{slide.title}}</div>
+        <div *ngIf="slide.enable" class="subject-metrics">{{slide.metrics.copies + slide.metrics.shares}}명이 썼어요!</div>
+        <div *ngIf="!slide.enable" class="subject-metrics">서비스 준비중입니다</div>
+      </div>
+    </owl-carousel>
+
+    <button class="btn btn-primary btn-lg" [disabled]="linkDisabled" (click)="write()">쓰기</button>
+  </ng-container>
+
+  <p class="copyright">
+    <fa-icon [icon]="['far', 'copyright']"></fa-icon>
+    <!--&copy;-->
+    제이의스튜디오
+  </p>
+</main>

@@ -1,0 +1,30 @@
+.btn {
+  display: block;
+  height: 36px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: .25em;
+
+  transition: opacity .3s;
+
+  &:disabled {
+    opacity: .18;
+  }
+}
+
+.btn-pills {
+  border-radius: 10em;
+}
+
+.btn-primary {
+  background: $primary;
+  color: #fff;
+}
+
+.btn-lg {
+  height: 44px;
+}

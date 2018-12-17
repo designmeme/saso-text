@@ -28,6 +28,10 @@
                 "output": "/"
               }
             ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
             "styles": [
               "node_modules/spoqa-han-sans/css/SpoqaHanSans-kr.css",
               "node_modules/normalize.css/normalize.css",
@@ -38,7 +42,6 @@
                 "src/scss"
               ]
             },
-            "scripts": []
           },
           "configurations": {
             "production": {
@@ -84,7 +87,10 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
             "styles": [
               "node_modules/spoqa-han-sans/css/SpoqaHanSans-kr.css",
               "node_modules/normalize.css/normalize.css",

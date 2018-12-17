@@ -1,6 +1,7 @@
 {
-  "subjects": {
-    "happy-new-year": {
+  "subjects": [
+    {
+      "id": "happy-new-year",
       "title": "새해 인사 메세지",
       "image": "",
       "metrics": {
@@ -25,7 +26,8 @@
       "position": 1,
       "enable": true
     },
-    "happy-birthday": {
+    {
+      "id": "happy-birthday",
       "title": "생일 축하 메세지",
       "image": "",
       "metrics": {
@@ -35,7 +37,7 @@
       "position": 2,
       "enable": false
     }
-  },
+  ],
 
   "messages": {
     "happy-new-year": [
