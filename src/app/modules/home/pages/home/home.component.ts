@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 
@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
         const input = data.currentTarget.querySelector('.owl-item.active input');
         if (input) {
           const activeIndexValue = +input.value;
-          console.log(activeIndexValue);
           const active = this.subjects[activeIndexValue];
           this.linkDisabled = !active.enable;
           this.activeIndex = activeIndexValue;

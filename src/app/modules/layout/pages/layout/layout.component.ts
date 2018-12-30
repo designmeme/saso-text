@@ -24,9 +24,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     iconRegistry.addSvgIcon(
         'logo',
         sanitizer.bypassSecurityTrustResourceUrl('assets/images/logo.svg'));
-  }
 
-  ngOnInit() {
     // 라우트 변경에 따라 헤더 타이틀을 변경한다.
     this.subscription = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
@@ -41,8 +39,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
     ).subscribe(data => {
       // 메타 데이터를 그대로 활용한다.
       this.title = data.meta && data.meta.title ? data.meta.title : '';
-      console.log(this.title);
+      // console.log(this.title, 'layout title');
     });
+  }
+
+  ngOnInit() {
+
   }
 
   ngOnDestroy() {

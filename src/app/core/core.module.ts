@@ -11,7 +11,7 @@ import {environment} from '../../environments/environment';
 // ngx-meta default setting
 import {MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning} from '@ngx-meta/core';
 export function metaFactory(): MetaLoader {
-  const origin = 'https://saso-tBrowserAnimationsModuleext.com';
+  const origin = 'https://saso-text.com';
   return new MetaStaticLoader({
     pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
     pageTitleSeparator: ' - ',

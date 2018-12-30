@@ -1,3 +1,34 @@
-<p>
-  write works!
-</p>
+<main class="main">
+
+  <div class="editor">
+    <div class="textarea">
+      새해 인사 보내요. 올 한해도 정말 고마웠어요. 항상 고맙게 생각하고 있어요. 항상 걱정해주고 생각해주어서 고마워요. 한 해 마무리 잘 하시고, 따뜻한 연말 보내시길 바랍니다.
+    </div>
+    <div class="level-slider">
+      <div class="slider-label">높임말</div>
+      <mat-slider vertical min="1" max="4" step="1" value="2"></mat-slider>
+      <div class="slider-label">낮춤말</div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'copy']"></fa-icon>복사</button>
+    <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'share']"></fa-icon>공유</button>
+  </div>
+
+  <div class="tag-list" [class.opened]="tagOpened" [class.closed]="!tagOpened">
+    <button class="btn-toggle" aria-label="접기" (click)="tagOpened = !tagOpened"><span>〉</span></button>
+    <div class="inner">
+      <small class="form-text">담고 싶은 내용을 선택해 주세요.</small>
+      <div class="scroll" *ngIf="tags">
+        <form [formGroup]="tagForm" class="container">
+          <label *ngFor="let tag of tags" class="btn btn-primary btn-pills" [class.checked]="checkbox.checked">
+            <input type="checkbox" [formControlName]="tag" #checkbox>{{tag}}
+          </label>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</main>
