@@ -6,7 +6,7 @@
     </div>
     <div class="level-slider">
       <div class="slider-label">높임말</div>
-      <mat-slider vertical min="1" max="4" step="1" value="2"></mat-slider>
+      <mat-slider vertical min="0" [max]="levelMax" step="1" [formControl]="levelControl"></mat-slider>
       <div class="slider-label">낮춤말</div>
     </div>
   </div>

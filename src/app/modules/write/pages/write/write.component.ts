@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
-import {FormBuilder, FormArray, FormGroup} from '@angular/forms';
+import {FormBuilder, FormArray, FormGroup, FormControl} from '@angular/forms';
 
 // firebase
 import {AngularFireDatabase} from '@angular/fire/database';
@@ -20,35 +20,54 @@ export class WriteComponent implements OnInit {
   messages$: Observable<any>;
   tagForm: FormGroup;
 
+  levelControl: FormControl;
+  levelMax = 3;
+  level = 2;
+
   tagOpened = true;
 
   constructor(
     private fb: FormBuilder,
     private db: AngularFireDatabase,
     private route: ActivatedRoute,
-  ) { }
+  ) {
+    this.levelControl = this.fb.control(this.level);
+    this.levelControl.valueChanges.subscribe(level => {
+      this.level = level;
+
+      this.getMesssage();
+    });
+  }
 
   ngOnInit() {
     // const id = this.route.snapshot.params['id'];
     const id = 'happy-new-year';
     console.log(id);
-    this.tags$ = this.db.list(`/subjects`).valueChanges().pipe(
+    this.db.list<any>(`/subjects`).valueChanges().pipe(
       map(list => list.find(item => item['id'] === id)),
-      pluck('tags'),
-      tap(tags => this.tags = tags)
-    );
-    this.messages$ = this.db.list(`/messages/${id}`).valueChanges();
+    ).subscribe(
+      data => {
+        console.log(data);
 
-    this.tags$.subscribe(
-      tags => {
-        const newTags = [];
-        tags.forEach(tag => {
-          newTags.push({name: tag, checked: true});
-        });
+        // 높임말 관련 설정
+        this.levelMax = data.levels - 1;
 
-        this.initForm(newTags);
+
+        // this.tags = data.tags;
+
+        // const newTags = [];
+        // data.tags.forEach(tag => {
+        //   newTags.push({name: tag, checked: true});
+        // });
+        //
+        // this.tags = tags;
+        //
+        // this.initForm(newTags);
       }
     );
+
+    this.messages$ = this.db.list(`/messages/${id}`).valueChanges();
+
     this.messages$.subscribe(
       list => {
         console.log(list);
@@ -68,6 +87,11 @@ export class WriteComponent implements OnInit {
     this.tagForm.valueChanges.subscribe(value => {
       console.log(value);
     });
+  }
+
+  // 설정에 맞는 메세지를 가져온다.
+  getMesssage() {
+    console.log('getMessage', this.level);
   }
 
 }
