@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 
-import {MatIconModule, MatSliderModule} from '@angular/material';
+import {MatSliderModule} from '@angular/material';
 
 // fontawesome
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -17,14 +17,12 @@ import {faShare, faCopy} from '@fortawesome/free-solid-svg-icons';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatIconModule,
     MatSliderModule,
     FontAwesomeModule,
   ],
   exports: [
     HttpClientModule,
     ReactiveFormsModule,
-    MatIconModule,
     MatSliderModule,
     FontAwesomeModule,
   ],
@@ -35,21 +33,4 @@ export class SharedModule {
     library.add(faCopy);
     library.add(faShare);
   }
-
-  // constructor(
-  //   iconRegistry: MatIconRegistry,
-  //   sanitizer: DomSanitizer,
-  // ) {
-  //
-  //
-  //   iconRegistry.addSvgIcon(
-  //     'icon-sns-fb',
-  //     sanitizer.bypassSecurityTrustResourceUrl('assets/images/icon-sns-facebook.svg'));
-  //   iconRegistry.addSvgIcon(
-  //     'icon-sns-kakao',
-  //     sanitizer.bypassSecurityTrustResourceUrl('assets/images/icon-sns-kakaotalk.svg'));
-  //   iconRegistry.addSvgIcon(
-  //     'icon-sns-line',
-  //     sanitizer.bypassSecurityTrustResourceUrl('assets/images/icon-sns-line.svg'));
-  // }
 }

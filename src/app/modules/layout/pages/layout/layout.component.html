@@ -1,8 +1,8 @@
 <header class="site-header" [class.has-title]="!!title">
   <h1 class="header-title">
     <a routerLink="/">
-      <mat-icon class="icon-logo" svgIcon="logo"></mat-icon>
-      <span *ngIf="!title" class="sr-only">사소한 대필</span>
+      <img class="icon-logo" src="/assets/images/logo.svg" alt="">
+      <span class="sr-only">사소한 대필</span>
     </a>
     <span *ngIf="title" class="page-title">{{title}}</span>
   </h1>

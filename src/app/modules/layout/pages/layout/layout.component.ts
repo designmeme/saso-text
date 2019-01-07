@@ -1,6 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {MatIconRegistry} from '@angular/material';
-import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 import {filter, map, mergeMap} from 'rxjs/internal/operators';
@@ -16,15 +14,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer,
     private router: Router,
     private route: ActivatedRoute,
   ) {
-    iconRegistry.addSvgIcon(
-        'logo',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/images/logo.svg'));
-
     // 라우트 변경에 따라 헤더 타이틀을 변경한다.
     this.subscription = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),

@@ -15,13 +15,16 @@
     margin: 0;
     padding: 0 20px;
     a {
+      display: block;
       overflow: hidden;
-      font-size: 0;
-    }
-    .icon-logo {
       width: 140px;
       height: 23px;
       //height: 25px;
+    }
+    .icon-logo {
+      display: block;
+      width: auto;
+      height: 100%;
     }
 
     .page-title {
