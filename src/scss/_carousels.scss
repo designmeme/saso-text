@@ -1,0 +1,41 @@
+
+.subject-carousel {
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+  .owl-stage-outer {
+    // 화살표 아래에서 은근히 사라지기
+    &:before,
+    &:after {
+      content: '';
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+    }
+    &:before {
+      left: 0;
+      background: linear-gradient(to right, $body-bg 40%, rgba($body-bg, 0) 100%);
+    }
+    &:after {
+      right: 0;
+      background: linear-gradient(to left, $body-bg 40%, rgba($body-bg, 0) 100%);
+    }
+  }
+
+  .owl-nav {
+    > * {
+      position: absolute;
+      top: 0;
+      font-size: 20px;
+      color: $primary;
+    }
+    .owl-prev {
+      left: 0;
+    }
+    .owl-next {
+      right: 0;
+    }
+  }
+}

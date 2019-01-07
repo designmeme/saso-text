@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 
@@ -12,7 +12,6 @@ import {AngularFireDatabase} from '@angular/fire/database';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit {
   // @ViewChild('subjectCarousel') subjectCarousel: OwlCarousel;

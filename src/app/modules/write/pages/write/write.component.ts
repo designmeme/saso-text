@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormControl} from '@angular/forms';
 
-import {FormBuilder, FormArray, FormGroup, FormControl} from '@angular/forms';
+import {map, pluck, tap} from 'rxjs/internal/operators';
 
 // firebase
 import {AngularFireDatabase} from '@angular/fire/database';
-import {Observable} from 'rxjs';
-import {map, pluck, tap} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-write',
