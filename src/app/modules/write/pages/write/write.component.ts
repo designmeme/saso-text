@@ -15,15 +15,14 @@ import {map, pluck, tap} from 'rxjs/internal/operators';
 })
 export class WriteComponent implements OnInit {
 
-  tags$: Observable<any>;
-  tags: any[];
-  messages$: Observable<any>;
-  tagForm: FormGroup;
+  messages: any[];
 
   levelControl: FormControl;
   levelMax = 3;
   level = 2;
 
+  tags: any[];
+  selectedTags = ['인사', '희망', '감사'];
   tagOpened = true;
 
   constructor(
@@ -37,61 +36,51 @@ export class WriteComponent implements OnInit {
 
       this.getMesssage();
     });
+
   }
 
   ngOnInit() {
     // const id = this.route.snapshot.params['id'];
     const id = 'happy-new-year';
-    console.log(id);
+
     this.db.list<any>(`/subjects`).valueChanges().pipe(
       map(list => list.find(item => item['id'] === id)),
     ).subscribe(
       data => {
-        console.log(data);
-
         // 높임말 관련 설정
         this.levelMax = data.levels - 1;
 
+        // 태그 정보 저장
+        this.tags = data.tags;
 
-        // this.tags = data.tags;
-
-        // const newTags = [];
-        // data.tags.forEach(tag => {
-        //   newTags.push({name: tag, checked: true});
-        // });
-        //
-        // this.tags = tags;
-        //
-        // this.initForm(newTags);
+        this.db.list(`/messages/${id}`).valueChanges().subscribe(
+          list => {
+            this.messages = list;
+            this.getMesssage();
+          }
+        );
       }
     );
-
-    this.messages$ = this.db.list(`/messages/${id}`).valueChanges();
-
-    this.messages$.subscribe(
-      list => {
-        console.log(list);
-      }
-    );
-
-
-  }
-
-  initForm(tags) {
-    const tagControls = {};
-    tags.forEach(tag => {
-      tagControls[tag.name] = tag.checked;
-    });
-    this.tagForm = this.fb.group(tagControls);
-
-    this.tagForm.valueChanges.subscribe(value => {
-      console.log(value);
-    });
   }
 
   // 설정에 맞는 메세지를 가져온다.
   getMesssage() {
-    console.log('getMessage', this.level);
+    console.log('getMessage', this.level, this.selectedTags);
   }
 
+  // 선택된 태그인지 여부를 반환한다.
+  isCheckedTag(tag: string): boolean {
+    return this.selectedTags.includes(tag);
+  }
+
+  // 태그 클릭을 처리하고, 메세지를 다시 불러온다.
+  clickTag(tag: string) {
+    if (this.isCheckedTag(tag)) {
+      this.selectedTags = this.selectedTags.filter(text => text !== tag);
+    } else {
+      this.selectedTags.push(tag);
+    }
+
+    this.getMesssage();
+  }
 }

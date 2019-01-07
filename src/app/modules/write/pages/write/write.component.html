@@ -21,11 +21,13 @@
     <div class="inner">
       <small class="form-text">담고 싶은 내용을 선택해 주세요.</small>
       <div class="scroll" *ngIf="tags">
-        <form [formGroup]="tagForm" class="container">
-          <label *ngFor="let tag of tags" class="btn btn-primary btn-pills" [class.checked]="checkbox.checked">
-            <input type="checkbox" [formControlName]="tag" #checkbox>{{tag}}
-          </label>
-        </form>
+        <div class="container">
+          <button *ngFor="let tag of tags;"
+                  [class.checked]="isCheckedTag(tag)"
+                  class="btn btn-primary btn-pills"
+                  (click)="clickTag(tag)"
+          >{{tag}}</button>
+        </div>
       </div>
     </div>
 
