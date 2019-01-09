@@ -15,10 +15,11 @@ import {AngularFireDatabase} from '@angular/fire/database';
 export class WriteComponent implements OnInit {
 
   messages: any[];
+  message: string;
 
   levelControl: FormControl;
   levelMax = 3;
-  level = 2;
+  level = 3;
 
   tags: any[];
   selectedTags = ['인사', '희망', '감사'];
@@ -64,7 +65,47 @@ export class WriteComponent implements OnInit {
 
   // 설정에 맞는 메세지를 가져온다.
   getMesssage() {
-    console.log('getMessage', this.level, this.selectedTags);
+    let targetTags = [...this.selectedTags];
+    let targetMsgs = [];
+    let targetLength = targetTags.length;
+    const msgs = [];
+
+    // console.log('getMessage', this.level, targetTags);
+    while (targetTags.length) {
+      targetMsgs = this.messages.filter(msg => {
+        return msg.tags.length === targetLength;
+      });
+
+      // console.log('target', targetTags, targetMsgs, targetLength);
+      if (targetMsgs.length === 0) {
+        targetLength -= 1;
+        continue;
+      }
+
+      const tempMessages = [];
+      targetMsgs.forEach(msg => {
+        const tags = this.sort(msg.tags).join(',');
+        if (tags === this.sort(targetTags).slice(0, targetLength).join(',')) {
+          tempMessages.push(msg.texts[this.level]);
+        }
+      });
+
+      if (tempMessages.length) {
+        msgs.push(tempMessages[Math.floor(Math.random() * tempMessages.length)]);
+      }
+
+      targetTags = targetTags.slice(targetLength);
+      targetLength = targetTags.length;
+
+      // console.log(tempMessages, targetTags);
+      // console.log(msgs);
+    }
+
+    this.message = msgs.join(' ');
+  }
+
+  sort(array) {
+    return [...array.sort((a, b) => a > b ? -1 : 1)];
   }
 
   // 선택된 태그인지 여부를 반환한다.
