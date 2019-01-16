@@ -1,25 +1,27 @@
 <main class="main">
 
-  <div class="editor">
-    <div class="textarea">
-      {{message}}
+  <div class="wrapper">
+    <div class="editor">
+      <div class="textarea">
+        {{message}}
+      </div>
+      <div class="level-slider">
+        <div class="slider-label">높임말</div>
+        <mat-slider vertical min="0" [max]="levelMax" step="1" [formControl]="levelControl"></mat-slider>
+        <div class="slider-label">낮춤말</div>
+      </div>
     </div>
-    <div class="level-slider">
-      <div class="slider-label">높임말</div>
-      <mat-slider vertical min="0" [max]="levelMax" step="1" [formControl]="levelControl"></mat-slider>
-      <div class="slider-label">낮춤말</div>
-    </div>
-  </div>
 
-  <div class="buttons">
-    <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'copy']"></fa-icon>복사</button>
-    <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'share']"></fa-icon>공유</button>
+    <div class="buttons">
+      <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'copy']"></fa-icon>복사</button>
+      <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'share']"></fa-icon>공유</button>
+    </div>
   </div>
 
   <div class="tag-list" [class.opened]="tagOpened" [class.closed]="!tagOpened">
     <button class="btn-toggle" aria-label="접기" (click)="tagOpened = !tagOpened"><span>〉</span></button>
     <div class="inner">
-      <small class="form-text">담고 싶은 내용을 선택해 주세요.</small>
+      <div class="wrapper"><small class="form-text">담고 싶은 내용을 선택해 주세요.</small></div>
       <div class="scroll" *ngIf="tags">
         <div class="container">
           <button *ngFor="let tag of tags;"
