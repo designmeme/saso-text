@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormControl} from '@angular/forms';
 
-import {map, pluck, tap} from 'rxjs/internal/operators';
+import {BehaviorSubject, of} from 'rxjs';
+import {delay, map} from 'rxjs/internal/operators';
 
 // firebase
 import {AngularFireDatabase} from '@angular/fire/database';
@@ -15,7 +16,9 @@ import {AngularFireDatabase} from '@angular/fire/database';
 export class WriteComponent implements OnInit {
 
   messages: any[];
-  message: string;
+  msgControl: FormControl;
+
+  copied$ = new BehaviorSubject(false);
 
   levelControl: FormControl;
   levelMax = 3;
@@ -30,6 +33,8 @@ export class WriteComponent implements OnInit {
     private db: AngularFireDatabase,
     private route: ActivatedRoute,
   ) {
+    this.msgControl = this.fb.control('');
+
     this.levelControl = this.fb.control(this.level);
     this.levelControl.valueChanges.subscribe(level => {
       this.level = level;
@@ -101,7 +106,7 @@ export class WriteComponent implements OnInit {
       // console.log(msgs);
     }
 
-    this.message = msgs.join(' ');
+    this.msgControl.setValue(msgs.join(' '));
   }
 
   sort(array) {
@@ -122,5 +127,18 @@ export class WriteComponent implements OnInit {
     }
 
     this.getMesssage();
+  }
+
+  // 텍스트를 클립보드에 복사한다.
+  copyMessage(textareaElement: HTMLTextAreaElement, button: HTMLButtonElement) {
+    textareaElement.select();
+    document.execCommand('copy');
+    button.focus();
+
+    this.copied$.next(true);
+
+    of(null).pipe(
+      delay(1500),
+    ).subscribe(() => this.copied$.next(false));
   }
 }

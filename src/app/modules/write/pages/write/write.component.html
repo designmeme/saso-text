@@ -2,9 +2,7 @@
 
   <div class="wrapper">
     <div class="editor">
-      <div class="textarea">
-        {{message}}
-      </div>
+      <textarea class="textarea" readonly [formControl]="msgControl" #textarea></textarea>
       <div class="level-slider">
         <div class="slider-label">높임말</div>
         <mat-slider vertical min="0" [max]="levelMax" step="1" [formControl]="levelControl"></mat-slider>
@@ -13,7 +11,7 @@
     </div>
 
     <div class="buttons">
-      <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'copy']"></fa-icon>복사</button>
+      <button (click)="copyMessage(textarea, $event.target)" class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'copy']"></fa-icon>복사</button>
       <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'share']"></fa-icon>공유</button>
     </div>
   </div>
@@ -36,3 +34,7 @@
   </div>
 
 </main>
+
+<ng-container *ngIf="copied$ | async">
+  <div class="toast">메세지가 복사되었습니다.</div>
+</ng-container>
