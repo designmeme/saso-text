@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>공유하기</h2>
+<mat-dialog-content>
+  <div class="share-list">
+    <div class="item item-{{item.name}}" *ngFor="let item of snsList">
+      <span class="share-icon">
+        <img src="/assets/images/icon-sns-{{item.name}}.svg" alt="">
+      </span>
+      <span class="label">{{item.label}}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<button class="btn-dialog-close" [mat-dialog-close] aria-label="닫기"><fa-icon [icon]="['fas', 'times']"></fa-icon></button>

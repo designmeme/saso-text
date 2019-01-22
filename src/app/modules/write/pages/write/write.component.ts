@@ -7,6 +7,8 @@ import {delay, map} from 'rxjs/internal/operators';
 
 // firebase
 import {AngularFireDatabase} from '@angular/fire/database';
+import {MatDialog} from '@angular/material';
+import {ShareDialogComponent} from '../share-dialog/share-dialog.component';
 
 @Component({
   selector: 'app-write',
@@ -32,6 +34,7 @@ export class WriteComponent implements OnInit {
     private fb: FormBuilder,
     private db: AngularFireDatabase,
     private route: ActivatedRoute,
+    private dialog: MatDialog,
   ) {
     this.msgControl = this.fb.control('');
 
@@ -140,5 +143,17 @@ export class WriteComponent implements OnInit {
     of(null).pipe(
       delay(1500),
     ).subscribe(() => this.copied$.next(false));
+  }
+
+  // 공유하기 다이어로그를 연다.
+  openShareDialog() {
+    const dialogRef = this.dialog.open(ShareDialogComponent, {
+      width: '240px',
+      data: this.msgControl.value,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
   }
 }

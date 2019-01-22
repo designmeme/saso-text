@@ -12,7 +12,7 @@
 
     <div class="buttons">
       <button (click)="copyMessage(textarea, $event.target)" class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'copy']"></fa-icon>복사</button>
-      <button class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'share']"></fa-icon>공유</button>
+      <button (click)="openShareDialog()" class="btn btn-primary btn-pills"><fa-icon [icon]="['fas', 'share']"></fa-icon>공유</button>
     </div>
   </div>
 
